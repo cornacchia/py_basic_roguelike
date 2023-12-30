@@ -6,7 +6,7 @@ import tcod
 
 import color
 from engine import Engine
-import entities_factory
+import entity_factories
 from procgen import generate_dungeon
 
 def main() -> None:
@@ -23,7 +23,7 @@ def main() -> None:
   max_monsters_per_room = 2
   max_items_per_room = 2
 
-  player = copy.deepcopy(entities_factory.player)
+  player = copy.deepcopy(entity_factories.player)
 
   engine = Engine(player=player)
 
