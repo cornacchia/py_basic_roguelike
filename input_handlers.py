@@ -13,7 +13,8 @@ from actions import (
   Action,
   BumpAction,
   WaitAction,
-  PickupAction
+  PickupAction,
+  TakeStairsActions
 )
 import color
 from entity import Item
@@ -209,10 +210,17 @@ class InventoryDropHanlder(InventoryEventHandler):
 class MainGameEventHandler(EventHandler):
   def ev_keydown(self, event: tcod.event.KeyDown) -> Optional[ActionOrHandler]:
     action: Optional[Action] = None
+
     # Get the pressed key
     key = event.sym
+    modifier = event.mod
 
     player = self.engine.player
+
+    if key == tcod.event.KeySym.PERIOD and modifier & (
+      tcod.event.KeySym.LSHIFT | tcod.event.KeySym.RSHIFT
+    ):
+      return TakeStairsActions(player)
 
     # Movement keys
     if key in MOVE_KEYS:
