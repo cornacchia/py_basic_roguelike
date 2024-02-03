@@ -59,11 +59,24 @@ class ItemAction(Action):
     return self.engine.game_map.get_actor_at_location(*self.target_xy)
 
   def perform(self) -> None:
-    self.item.consumable.activate(self)
+    if self.item.consumable:
+      self.item.consumable.activate(self)
 
 class DropItem(ItemAction):
   def perform(self) -> None:
     self.entity.inventory.drop(self.item)
+
+    if self.entity.equipment.item_is_equipped(self.item):
+      self.entity.equipment.toggle_equip(self.item)
+
+class EquipAction(Action):
+  def __init__(self, entity: Actor, item: Item):
+    super().__init__(entity)
+
+    self.item = item
+
+  def perform(self) -> None:
+    self.entity.equipment.toggle_equip(self.item)
 
 class WaitAction(Action):
   def perform(self) -> None:
