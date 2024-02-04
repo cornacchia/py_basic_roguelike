@@ -2,6 +2,8 @@
 
 Basic "boilerplate" project for a roguelike, made following [this tutorial](http://www.rogueliketutorials.com/tutorials/tcod/v2/) from rogueliketutorials.com.
 
+Made in python 3.8, using [venv](https://docs.python.org/3/library/venv.html) for dependencies (see `requirements.txt`).
+
 To install:
 * `python3 -m venv env`
 * `source env/bin/activate`
