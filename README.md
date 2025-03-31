@@ -10,7 +10,7 @@ To install:
 * `pip install -r requirements.txt`
 
 To start:
-* `source /env/bin/activate`
+* `source env/bin/activate`
 * `python3 main.py`
 
 Basic commands:

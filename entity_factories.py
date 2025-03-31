@@ -5,9 +5,11 @@ from components.fighter import Fighter
 from components.inventory import Inventory
 from components.level import Level
 from entity import Actor, Item
+import tile_types
 
 player = Actor(
-  char="@",
+  #char="@",
+  char=tile_types.player_tile,
   color=(255, 255, 255),
   name="Player",
   ai_cls=HostileEnemy,
@@ -18,7 +20,8 @@ player = Actor(
 )
 
 orc = Actor(
-  char="o",
+  #char="o",
+  char=tile_types.orc_tile,
   color=(63, 127, 63),
   name="Orc",
   ai_cls=HostileEnemy,
@@ -29,7 +32,8 @@ orc = Actor(
 )
 
 troll = Actor(
-  char="T",
+  #char="T",
+  char=tile_types.troll_tile,
   color=(0, 127, 0),
   name="Troll",
   ai_cls=HostileEnemy,
@@ -40,56 +44,64 @@ troll = Actor(
 )
 
 health_potion = Item(
-  char = "!",
+  #char = "!",
+  char=tile_types.healingpotion_tile,
   color = (127, 0, 255),
   name = "Health Potion",
   consumable=consumable.HealingConsumable(amount=4)
 )
 
 lightning_scroll = Item(
-  char = "~",
+  #char = "~",
+  char=tile_types.scroll_tile,
   color=(255, 255, 0),
   name="Lightning scroll",
   consumable=consumable.LightningDamageConsumable(damage=20, maximum_range=5)
 )
 
 confusion_scroll = Item(
-  char = "~",
+  #char = "~",
+  char=tile_types.scroll_tile,
   color=(207, 63, 255),
   name="Confusion scroll",
   consumable=consumable.ConfusionConsumable(number_of_turns=10)
 )
 
 fireball_scroll = Item(
-  char = "~",
+  #char = "~",
+  char=tile_types.scroll_tile,
   color=(255, 0, 0),
   name="Fireball scroll",
   consumable=consumable.FireballDamageConsumable(damage=12, radius=3)
 )
 
 dagger = Item(
-  char="/",
+  #char="/",
+  char=tile_types.dagger_tile,
   color=(0, 191, 255),
   name="Dagger",
   equippable=equippable.Dagger()
 )
 
 sword = Item(
-  char="/",
+  #char="/",
+  char=tile_types.sword_tile,
   color=(0, 191, 255),
   name="Sword",
   equippable=equippable.Sword()
 )
 
 leather_armor = Item(
-  char="[",
+  #char="[",
+  char=tile_types.shield_tile,
   color=(139, 69, 19),
   name="Leather Armor",
   equippable=equippable.LeatherArmor(),
 )
 
 chain_mail = Item(
-  char="[",
+  #char="[",
+  char=tile_types.shield_tile,
   color=(139, 69, 19),
   name="Chain Mail",
   equippable=equippable.ChainMail()

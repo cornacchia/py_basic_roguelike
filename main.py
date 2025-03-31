@@ -2,11 +2,23 @@
 import traceback
 
 import tcod
+from tcod import libtcodpy
 
 import color
 import exceptions
 import input_handlers
 import setup_game
+
+def load_customfont(tileset):
+  #The index of the first custom tile in the file
+  a = 256
+
+  # Graphical tiles start at row 5
+  for y in range(5,6):
+    # Rows are 32 tiles long
+    for x in range(32):
+      tileset.remap(a, x, y)
+      a += 1
 
 def save_game(handler: input_handlers.BaseEventHandler, filename: str) -> None:
   if isinstance(handler, input_handlers.EventHandler):
@@ -17,9 +29,11 @@ def main() -> None:
   screen_width = 80
   screen_height = 50
 
+  # tileset = libtcodpy.console_set_custom_font('graphical_tileset.png', libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_TCOD, 32, 10)
   tileset = tcod.tileset.load_tilesheet(
-    "tileset.png", 32, 8, tcod.tileset.CHARMAP_TCOD
+    "graphical_tileset.png", 32, 10, tcod.tileset.CHARMAP_TCOD
   )
+  load_customfont(tileset)
 
   handler: input_handlers.BaseEventHandler = setup_game.MainMenu()
 

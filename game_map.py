@@ -71,7 +71,10 @@ class GameMap:
 
     for entity in entities_sorted_for_rendering:
       if self.visible[entity.x, entity.y]:
-        console.print(x=entity.x, y=entity.y, string=entity.char, fg=entity.color)
+        if isinstance(entity.char, int):
+          console.put_char(x=entity.x, y=entity.y, ch=entity.char)
+        else:
+          console.print(x=entity.x, y=entity.y, string=entity.char, fg=entity.color)
 
 class GameWorld:
   def __init__(
